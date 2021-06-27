@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { request } from "../lib/datocms";
-import { getPost } from "../queries/get-post";
+import { getPostById } from "../queries/get-post";
 
 export default function Test(props) {
   console.log(props);
@@ -21,7 +21,7 @@ const postQuery = `{
 
 export const getStaticProps: GetStaticProps = async () => {
   var posts = await request({ query: postQuery });
-  var post = await getPost("45036888");
+  var post = await getPostById("45036888");
 
   return {
     props: { posts, post },
