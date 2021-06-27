@@ -1,0 +1,12 @@
+- Create pages
+	- contact
+	- about
+	- portfolio / experience
+
+- Update design
+	- Use tailwind.css
+
+- Use headless CMS for content
+	- DatoCMS
+
+- Create blog posts

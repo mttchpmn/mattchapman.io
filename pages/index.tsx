@@ -9,7 +9,7 @@ import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = await getSortedPostsData();
 
   return {
     props: {
@@ -31,27 +31,20 @@ export default function Home({ allPostsData }) {
           mountainous lands of New Zealand. I like to share stories from my
           adventures in cyberspace, music, and wild nature.
         </p>
-        <p>
-          Thanks for stopping by. Feel free to{" "}
-          <Link href="/contact">
-            <a>get in touch</a>
-          </Link>
-          !
-        </p>
       </section>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
+          {allPostsData.map(({ slug, date, title }) => (
+            <li className={utilStyles.listItem} key={slug}>
+              <Link href={`/posts/${slug}`}>
                 <a>{title}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              {/* <small className={utilStyles.lightText}>
                 <Date dateString={date} />
-              </small>
+              </small> */}
             </li>
           ))}
         </ul>

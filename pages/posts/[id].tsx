@@ -32,7 +32,7 @@ export default function Post({ postData }: { postData: PostData }) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id);
+  const postData = await getPostData(params.slug as string);
 
   return {
     props: {
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds();
+  const paths = await getAllPostIds();
 
   return {
     paths,
