@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import remark from "remark";
 import html from "remark-html";
 import { getAllPosts } from "../queries/get-all-posts";
-import { getPost } from "../queries/get-post";
+import { getPostById } from "../queries/get-post";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -88,5 +88,5 @@ export async function getPostData(id: string) {
   //   contentHtml,
   //   ...matterResult.data,
   // };
-  var post = await getPost(id);
+  var post = await getPostById(id);
 }
