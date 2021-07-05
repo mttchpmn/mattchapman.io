@@ -40,7 +40,7 @@ const Bio = () => {
           <p className="mb-8 leading-relaxed">{description}</p>
           <div className="flex justify-center w-full md:justify-start">
             <button className="inline-flex px-6 py-2 text-white bg-gray-500 border-0 rounded text-md md:text-lg focus:outline-none hover:bg-gray-600">
-              Drop me a line
+              Get in touch
             </button>
           </div>
         </div>
@@ -112,6 +112,9 @@ const LatestPosts = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="max-w-6xl px-5 py-12 mx-auto">
+        <h3 className="pb-2 text-3xl text-center text-black text-semibold">
+          Latest Posts
+        </h3>
         <div className="flex flex-wrap ">
           {posts.slice(0, 3).map((p) => (
             <PostPreview post={p} />
@@ -132,7 +135,7 @@ const Contact = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col w-full mb-12 text-center">
             <h1 className="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl title-font">
-              Drop me a line
+              Get in touch
             </h1>
             <p className="mx-auto text-base leading-relaxed lg:w-1/2">
               Need an engineer? Have a question? Want to debate who'd win in a
