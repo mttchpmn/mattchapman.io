@@ -19,7 +19,7 @@ const Header = () => {
 
 const Content = ({ children }) => (
   <div className="container max-w-sm min-w-full min-h-screen bg-gray-100 md:max-w-6xl">
-    {children}
+    <div className="bg-gradient-to-t from-blue-50 to-gray-100">{children}</div>
   </div>
 );
 
@@ -38,7 +38,7 @@ const Bio = () => {
             {tagline}
           </h1>
           <p className="mb-8 leading-relaxed">{description}</p>
-          <div className="flex justify-start w-full">
+          <div className="flex justify-center w-full md:justify-start">
             <button className="inline-flex px-6 py-2 text-white bg-gray-500 border-0 rounded text-md md:text-lg focus:outline-none hover:bg-gray-600">
               Drop me a line
             </button>
@@ -203,7 +203,7 @@ const Contact = () => {
 
 const Footer = () => {
   return (
-    <footer className="text-gray-600 bg-gray-100 body-font">
+    <footer className="text-gray-600 bg-white body-font">
       <div className="container flex flex-col items-center px-2 py-6 mx-auto sm:flex-row">
         <a className="flex items-center justify-center text-xl font-medium text-gray-900 title-font md:justify-start">
           Matt Chapman
@@ -271,14 +271,59 @@ const Footer = () => {
   );
 };
 
+const Banner = () => {
+  const url =
+    "https://images.unsplash.com/photo-1556878516-61356c874f03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1778&q=80";
+
+  return (
+    <section>
+      <div className="overflow-hidden h-50 bg-gradient-to-b">
+        <img
+          className="object-cover object-center w-full h-48 md:h-96"
+          src={url}
+        />
+      </div>
+    </section>
+  );
+};
+
+const SocialBox = ({ title, description }) => {
+  return (
+    <div className="flex flex-col w-1/5 py-16 text-center bg-white hover:bg-gray-100 rounded-xl">
+      <h3 className="text-xl font-semibold text-black">{title}</h3>
+      <p className="w-5/6 mx-auto">{description}</p>
+    </div>
+  );
+};
+
+const Social = () => {
+  return (
+    <section className="text-gray-600 body-font">
+      <div className="max-w-6xl px-5 py-12 mx-auto">
+        <h3 className="pb-6 text-3xl text-center text-black text-semibold">
+          Follow me on social
+        </h3>
+        <div className="flex flex-wrap justify-center space-x-5">
+          <SocialBox title="GitHub" description="Code and stuff" />
+          <SocialBox title="LinkedIn" description="All about the synergy" />
+          <SocialBox title="Youtube" description="Lot's of country music" />
+          <SocialBox title="Instagram" description="Climbing adventures" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function Home() {
   return (
     <div className="debug-screens">
       <Header />
+      <Banner />
       <Content>
         <Bio />
         <LatestPosts />
         <Contact />
+        <Social />
       </Content>
       <Footer />
     </div>
