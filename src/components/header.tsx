@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Header = () => {
   return (
     <header className="text-gray-600 body-font">
@@ -6,11 +8,15 @@ const Header = () => {
           Matt Chapman
         </a>
         <nav className="flex flex-wrap items-center justify-center text-base md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400">
-          <a className="mr-5 hover:text-gray-900">About</a>
-          <a className="mr-5 hover:text-gray-900" href="#contact">
-            Contact
-          </a>
-          <a className="mr-5 hover:text-gray-900">Blog</a>
+          <Link href="/">
+            <a className="mr-5 hover:text-gray-900">About</a>
+          </Link>
+          <Link href="/#contact">
+            <a className="mr-5 hover:text-gray-900">Contact</a>
+          </Link>
+          <Link href="/blog">
+            <a className="mr-5 hover:text-gray-900">Blog</a>
+          </Link>
         </nav>
       </div>
     </header>

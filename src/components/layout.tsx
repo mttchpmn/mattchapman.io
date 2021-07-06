@@ -8,6 +8,10 @@ const Layout = ({ children }) => {
     <>
       <Head>
         <title>Matt Chapman</title>
+        <script
+          src="https://kit.fontawesome.com/75363efdbb.js"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
       <Header />
       <Content>{children}</Content>

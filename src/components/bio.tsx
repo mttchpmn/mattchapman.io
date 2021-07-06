@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 const Bio = () => {
+  // TODO - Move these out of here
   const tagline = "Kia Ora, I'm Matt.";
   const description =
     "I'm a software engineer, commercial pilot and adventurer from the mountainous lands of New Zealand. I like to share stories from my	adventures in cyberspace, music, and wild nature.";
@@ -14,9 +17,11 @@ const Bio = () => {
           </h1>
           <p className="mb-8 leading-relaxed">{description}</p>
           <div className="flex justify-center w-full md:justify-start">
-            <button className="inline-flex px-6 py-2 text-white bg-gray-500 border-0 rounded text-md md:text-lg focus:outline-none hover:bg-gray-600">
-              Get in touch
-            </button>
+            <Link href="#contact">
+              <button className="inline-flex px-6 py-2 text-white bg-gray-500 border-0 rounded text-md md:text-lg focus:outline-none hover:bg-gray-600">
+                Get in touch
+              </button>
+            </Link>
           </div>
         </div>
         <div className="w-5/6 lg:max-w-lg lg:w-full md:w-1/2">
