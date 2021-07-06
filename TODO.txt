@@ -1,0 +1,2 @@
+- Setup latestPosts / blog page / blog CMS
+- Setup contact form, use Next local API routes
