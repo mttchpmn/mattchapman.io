@@ -8,12 +8,10 @@ const Layout = ({ children }) => {
     <>
       <Head>
         <title>Matt Chapman</title>
-        <script
-          src="https://kit.fontawesome.com/75363efdbb.js"
-          crossOrigin="anonymous"
-        ></script>
-
-        <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+        <link
+          href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+          rel="stylesheet"
+        />
       </Head>
       <Header />
       <Content>{children}</Content>
