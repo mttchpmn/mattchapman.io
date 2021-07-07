@@ -12,6 +12,8 @@ const Layout = ({ children }) => {
           src="https://kit.fontawesome.com/75363efdbb.js"
           crossOrigin="anonymous"
         ></script>
+
+        <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
       </Head>
       <Header />
       <Content>{children}</Content>

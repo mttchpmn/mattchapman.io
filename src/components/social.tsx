@@ -1,9 +1,11 @@
+import boxicons from "boxicons";
+
 const SocialBox = ({ title, description, icon, url }) => {
   return (
     <div className="py-12 text-center bg-white group hover:bg-gray-100 rounded-xl">
       <a href={url} target="_blank">
-        <div className="p-2">
-          <i className={`fab fa-${icon} fa-2x group-hover:text-indigo-700`} />
+        <div className="p-2 group-hover:text-indigo-700">
+          <box-icon type="logo" size="md" name={icon} animation="burst-hover" />
         </div>
         <h3 className="text-xl font-semibold text-black">{title}</h3>
         <p className="w-5/6 mx-auto">{description}</p>
