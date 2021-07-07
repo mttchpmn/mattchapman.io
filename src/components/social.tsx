@@ -1,6 +1,6 @@
 const SocialBox = ({ title, description, icon, url }) => {
   return (
-    <div className="flex flex-col w-1/5 py-12 text-center bg-white group hover:bg-gray-100 rounded-xl">
+    <div className="py-12 text-center bg-white group hover:bg-gray-100 rounded-xl">
       <a href={url} target="_blank">
         <div className="p-2">
           <i className={`fab fa-${icon} fa-2x group-hover:text-indigo-700`} />
@@ -19,7 +19,7 @@ const Social = () => {
         <h3 className="pb-6 text-3xl text-center text-black text-semibold">
           Follow me on social
         </h3>
-        <div className="flex flex-wrap justify-center space-x-5">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <SocialBox
             title="GitHub"
             url="https://github.com/mttchpmn"
