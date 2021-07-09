@@ -1,14 +1,12 @@
 import { NextApiResponse } from "next";
 import { NextApiRequestQuery } from "next/dist/next-server/server/api-utils";
-// import "dotenv/config";
+
 const sgMail = require("@sendgrid/mail");
 
 export default (req: NextApiRequestQuery, res: NextApiResponse) => {
   console.log(req.body);
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-  console.log("$" + JSON.stringify(process.env, null, 2));
 
   const msg = {
     to: "matt.chapman@firstaml.co.nz", // Change to your recipient
