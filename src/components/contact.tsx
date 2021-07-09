@@ -1,4 +1,25 @@
+import { useState } from "react";
+
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleFormSubmit = async () => {
+    console.log("Submitting form...");
+
+    const payload = { name, email, message };
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+  };
+
   return (
     <div>
       <section
@@ -29,6 +50,8 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                   />
                 </div>
@@ -45,6 +68,8 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-3 py-1 text-base leading-8 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                   />
                 </div>
@@ -60,12 +85,17 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="w-full h-32 px-3 py-1 text-base leading-6 text-gray-700 transition-colors duration-200 ease-in-out bg-gray-100 bg-opacity-50 border border-gray-300 rounded outline-none resize-none focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200"
                   ></textarea>
                 </div>
               </div>
               <div className="w-full p-2">
-                <button className="flex px-8 py-2 mx-auto text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600">
+                <button
+                  onClick={handleFormSubmit}
+                  className="flex px-8 py-2 mx-auto text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
+                >
                   Send Message
                 </button>
               </div>
