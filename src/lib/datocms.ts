@@ -1,4 +1,4 @@
-import { GraphQLClient } from "graphql-request";
+import { GraphQLClient, gql } from "graphql-request";
 
 export const request = ({
   query,
@@ -18,4 +18,33 @@ export const request = ({
   });
 
   return client.request(query, variables);
+};
+
+export type AboutContent = {
+  tagline: string;
+  description: string;
+  url: string;
+};
+export const getAboutContent = async (): Promise<AboutContent> => {
+  const query = gql`
+    {
+      about {
+        tagline
+        description
+        image {
+          url
+        }
+      }
+    }
+  `;
+
+  const {
+    about: {
+      tagline,
+      description,
+      image: { url },
+    },
+  } = await request({ query });
+
+  return { tagline, description, url };
 };

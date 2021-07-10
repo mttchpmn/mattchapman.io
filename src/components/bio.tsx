@@ -1,12 +1,14 @@
+import { GetStaticProps } from "next";
 import Link from "next/link";
 
-const Bio = () => {
+import { AboutContent } from "../lib/datocms";
+
+export default function Bio({ content }: { content: AboutContent }) {
   // TODO - Move these out of here
-  const tagline = "Kia Ora, I'm Matt.";
-  const description =
-    "I'm a software engineer, commercial pilot and adventurer from the mountainous lands of New Zealand. I like to share stories from my	adventures in cyberspace, music, and wild nature.";
-  const url =
-    "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+  // const url =
+  //   "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+
+  const { tagline, description, url } = content;
 
   return (
     <section className="text-gray-600 body-font bg-grey-500">
@@ -27,13 +29,13 @@ const Bio = () => {
         <div className="w-5/6 lg:max-w-lg lg:w-full md:w-1/2">
           <img
             className="object-cover object-center rounded"
-            alt="hero"
+            alt="Picture of Matt Chapman"
             src={url}
           />
         </div>
       </div>
     </section>
   );
-};
+}
 
-export default Bio;
+// export default Bio;
