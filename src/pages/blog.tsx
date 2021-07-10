@@ -1,32 +1,56 @@
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Banner from "../components/banner-image";
-import Bio from "../components/bio";
-import Contact from "../components/contact";
-import Content from "../components/content";
-import Footer from "../components/footer";
-import Header from "../components/header";
-import LatestPosts from "../components/latest-posts";
 import Layout from "../components/layout";
-import Modal from "../components/modal";
-import Social from "../components/social";
-import { useState } from "react";
+import { StructuredText } from "react-datocms";
+import { BlogPost, getBlogPosts } from "../lib/datocms";
+import Image from "next/image";
 
-export default function Home({ allPostsData }) {
-  const [modalOpen, setModalOpen] = useState(true);
+const ImageBlock = ({ title, url, caption }) => {
+  return (
+    <>
+      <h3>{title}</h3>
+      <div className="relative w-full h-64">
+        <Image src={url} layout="fill" objectFit="cover" />
+      </div>
+      <p>{caption}</p>
+    </>
+  );
+};
+
+export default function Home({ blogPost }) {
+  const handleBlockRender = ({ record }) => {
+    switch (record.__typename) {
+      case "ImageBlockRecord":
+        return (
+          <ImageBlock
+            title={record.title}
+            url={record.image.url}
+            caption={record.caption}
+          />
+        );
+      default:
+        return <p>default</p>;
+    }
+  };
 
   return (
     <Layout>
-      <Modal visible={modalOpen} setVisible={setModalOpen}>
-        Yo yo yo my dawg
-      </Modal>
-      <button
-        onClick={() => setModalOpen(true)}
-        className="px-6 py-2 bg-indigo-500"
-      >
-        Open Modal
-      </button>
+      <h2>{blogPost.title}</h2>
+      <StructuredText
+        data={blogPost.content as any}
+        renderBlock={handleBlockRender}
+      />
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const blogPost = await getBlogPosts();
+
+  console.log(blogPost);
+
+  return {
+    props: {
+      blogPost,
+    },
+  };
+};

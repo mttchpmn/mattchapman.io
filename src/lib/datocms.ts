@@ -95,3 +95,39 @@ export const getAboutContent = async (): Promise<AboutContent> => {
 
   return { tagline, description, url };
 };
+
+type Json = string;
+
+export type BlogPost = {
+  title: string;
+  content: Json;
+  blocks: any;
+};
+
+export const getBlogPosts = async () => {
+  const query = gql`
+    {
+      blogPost {
+        title
+        content {
+          blocks {
+            id
+            __typename
+            ... on ImageBlockRecord {
+              title
+              image {
+                url
+              }
+              caption
+            }
+          }
+          value
+        }
+      }
+    }
+  `;
+
+  const data = await request({ query });
+
+  return data.blogPost as any;
+};
