@@ -23,6 +23,7 @@ export const request = ({
 
 export type BannerContent = {
   url: string;
+  blurUpThumb: string;
 };
 
 export const getBannerContent = async (): Promise<BannerContent> => {
@@ -31,6 +32,7 @@ export const getBannerContent = async (): Promise<BannerContent> => {
       banner {
         image {
           url
+          blurUpThumb
         }
       }
     }
@@ -38,11 +40,11 @@ export const getBannerContent = async (): Promise<BannerContent> => {
 
   const {
     banner: {
-      image: { url },
+      image: { url, blurUpThumb },
     },
   } = await request({ query });
 
-  return { url };
+  return { url, blurUpThumb };
 };
 
 export type ContactContent = {
