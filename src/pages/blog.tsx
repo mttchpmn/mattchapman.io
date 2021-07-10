@@ -21,7 +21,6 @@ export default function Home({ allPostsData }) {
       <Modal visible={modalOpen} setVisible={setModalOpen}>
         Yo yo yo my dawg
       </Modal>
-      <Banner />
       <button
         onClick={() => setModalOpen(true)}
         className="px-6 py-2 bg-indigo-500"
