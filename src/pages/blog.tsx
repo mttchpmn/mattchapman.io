@@ -8,7 +8,7 @@ const ImageBlock = ({ title, url, caption }) => {
   return (
     <>
       <h3>{title}</h3>
-      <div className="relative w-full h-64">
+      <div className="relative w-full h-96">
         <Image src={url} layout="fill" objectFit="cover" />
       </div>
       <p>{caption}</p>
@@ -34,11 +34,13 @@ export default function Home({ blogPost }) {
 
   return (
     <Layout>
-      <h2>{blogPost.title}</h2>
-      <StructuredText
-        data={blogPost.content as any}
-        renderBlock={handleBlockRender}
-      />
+      <div className="container max-w-2xl mx-auto">
+        <h2>{blogPost.title}</h2>
+        <StructuredText
+          data={blogPost.content as any}
+          renderBlock={handleBlockRender}
+        />
+      </div>
     </Layout>
   );
 }
