@@ -8,10 +8,11 @@ const Layout = ({ children }) => {
     <>
       <Head>
         <title>Matt Chapman</title>
-        <meta name="description">
-          Matt Chapman is a software engineer, commercial pilot, musician, and
-          adventurer, from the mountainous wilds of New Zealand.
-        </meta>
+        <meta
+          name="description"
+          content="Matt Chapman is a software engineer, commercial pilot, musician, and
+          adventurer, from the mountainous wilds of New Zealand."
+        />
         <link
           href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
           rel="stylesheet"
