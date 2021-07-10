@@ -4,10 +4,12 @@ import { BannerContent } from "../lib/datocms";
 const Banner = ({ content }: { content: BannerContent }) => {
   return (
     <section>
-      <div className="">
-        <img
-          className="object-cover object-center w-full h-48 md:h-96"
+      <div className="relative w-full h-48 bg-gray-500 md:h-96">
+        <Image
           src={content.url}
+          alt="Picture of Lake Wakatipu, New Zealand"
+          layout="fill"
+          objectFit="cover"
         />
       </div>
     </section>
