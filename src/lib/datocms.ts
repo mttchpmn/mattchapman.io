@@ -1,4 +1,5 @@
 import { GraphQLClient, gql } from "graphql-request";
+import contact from "../pages/api/contact";
 
 export const request = ({
   query,
@@ -18,6 +19,26 @@ export const request = ({
   });
 
   return client.request(query, variables);
+};
+
+export type ContactContent = {
+  title: string;
+  description: string;
+};
+
+export const getContactContent = async () => {
+  const query = gql`
+    {
+      contact {
+        title
+        description
+      }
+    }
+  `;
+
+  const { contact } = await request({ query });
+
+  return contact;
 };
 
 export type AboutContent = {

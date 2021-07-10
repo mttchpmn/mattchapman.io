@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { ContactContent } from "../lib/datocms";
 import Modal from "./modal";
 
-const Contact = () => {
+const Contact = ({ content }: { content: ContactContent }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -51,11 +52,10 @@ const Contact = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col w-full mb-12 text-center">
             <h1 className="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl title-font">
-              Get in touch
+              {content.title}
             </h1>
             <p className="mx-auto text-base leading-relaxed lg:w-1/2">
-              Need an engineer? Have a question? Want to debate who'd win in a
-              fight between Gandalf and Dumbledore? I'd love to hear from you.
+              {content.description}
             </p>
           </div>
           <div className="mx-auto lg:w-1/2 md:w-2/3">
