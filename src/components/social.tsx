@@ -1,7 +1,7 @@
 const SocialBox = ({ title, description, icon, url }) => {
   return (
     <div className="py-12 text-center bg-white group hover:bg-gray-100 rounded-xl">
-      <a href={url} target="_blank">
+      <a rel="noopener noreferrer" href={url} target="_blank">
         <div className="p-2 group-hover:text-indigo-700">
           {/* <box-icon type="logo" size="md" name={icon} animation="burst-hover" /> */}
           <i className={`bx bxl-${icon} bx-md`} />
