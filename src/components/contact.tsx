@@ -1,12 +1,18 @@
 import { useState } from "react";
+import Modal from "./modal";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalText, setModalText] = useState("");
+
   const handleFormSubmit = async () => {
     console.log("Submitting form...");
+
+    // TODO - email validation
 
     const payload = { name, email, message };
 
@@ -17,11 +23,27 @@ const Contact = () => {
 
     const data = await response.json();
 
-    console.log(data);
+    if (data.successful) clearFormFields();
+
+    showModal(data.message);
+  };
+
+  const clearFormFields = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
+  const showModal = (text: string) => {
+    setModalText(text);
+    setModalOpen(true);
   };
 
   return (
     <div>
+      <Modal visible={modalOpen} setVisible={setModalOpen}>
+        <p>{modalText}</p>
+      </Modal>
       <section
         id="contact"
         className="relative text-gray-600 bg-white body-font"

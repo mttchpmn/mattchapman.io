@@ -1,11 +1,32 @@
 import { NextApiResponse } from "next";
 import { NextApiRequestQuery } from "next/dist/next-server/server/api-utils";
+import IsEmail from "isemail";
 
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async (req: NextApiRequestQuery, res: NextApiResponse) => {
   const { name, email, message } = JSON.parse(req.body as any);
+
+  if (!name)
+    return res
+      .status(400)
+      .json({ successful: false, message: "Name field cannot be blank" });
+  if (!email)
+    return res
+      .status(400)
+      .json({ successful: false, message: "Email field cannot be blank" });
+  if (!message)
+    return res
+      .status(400)
+      .json({ successful: false, message: "Message field cannot be blank" });
+  if (!IsEmail.validate(email))
+    return res
+      .status(400)
+      .json({
+        successful: false,
+        message: "Email is not a valid email address",
+      });
 
   const msg = {
     to: process.env.CONTACT_EMAIL_ADDRESS,
