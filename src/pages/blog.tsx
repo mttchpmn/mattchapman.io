@@ -4,6 +4,7 @@ import { StructuredText } from "react-datocms";
 import { BlogPost, getBlogPosts } from "../lib/datocms";
 import Image from "next/image";
 import Container from "../components/container";
+import PostContent from "../components/post-content";
 
 const BlogHeader = ({ title, src }) => {
   return (
@@ -19,47 +20,12 @@ const BlogHeader = ({ title, src }) => {
   );
 };
 
-const ImageBlock = ({ title, url, caption }) => {
-  return (
-    <>
-      <h3>{title}</h3>
-      <div className="relative w-full h-96">
-        <Image src={url} layout="fill" objectFit="cover" />
-      </div>
-      <p>{caption}</p>
-    </>
-  );
-};
-
-const BlogContent = ({ content }) => {
-  const handleBlockRender = ({ record }) => {
-    switch (record.__typename) {
-      case "ImageBlockRecord":
-        return (
-          <ImageBlock
-            title={record.title}
-            url={record.image.url}
-            caption={record.caption}
-          />
-        );
-      default:
-        return <p>default</p>;
-    }
-  };
-
-  return (
-    <div className="px-8 pt-24 bg-white">
-      <StructuredText data={content} renderBlock={handleBlockRender} />
-    </div>
-  );
-};
-
 export default function Post({ blogPost }: { blogPost: BlogPost }) {
   return (
     <Layout>
       <Container>
         <BlogHeader title={blogPost.title} src={blogPost.headerImage} />
-        <BlogContent content={blogPost.content} />
+        <PostContent content={blogPost.content} />
       </Container>
     </Layout>
   );
