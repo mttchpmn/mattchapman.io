@@ -100,8 +100,10 @@ type Json = string;
 
 export type BlogPost = {
   title: string;
+  headerImage: string;
   content: Json;
-  blocks: any;
+  slug: string;
+  tags: string[];
 };
 
 export const getBlogPosts = async () => {
@@ -109,6 +111,13 @@ export const getBlogPosts = async () => {
     {
       blogPost {
         title
+        headerImage {
+          url
+        }
+        slug
+        tags {
+          name
+        }
         content {
           blocks {
             id
@@ -127,7 +136,15 @@ export const getBlogPosts = async () => {
     }
   `;
 
-  const data = await request({ query });
+  const { blogPost: data } = await request({ query });
 
-  return data.blogPost as any;
+  const blogPost = {
+    title: data.title,
+    headerImage: data.headerImage.url,
+    content: data.content,
+    slug: data.slug,
+    tags: data.tags.map((t) => t.name),
+  };
+
+  return blogPost;
 };
