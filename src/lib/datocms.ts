@@ -21,12 +21,36 @@ export const request = ({
   return client.request(query, variables);
 };
 
+export type BannerContent = {
+  url: string;
+};
+
+export const getBannerContent = async (): Promise<BannerContent> => {
+  const query = gql`
+    {
+      banner {
+        image {
+          url
+        }
+      }
+    }
+  `;
+
+  const {
+    banner: {
+      image: { url },
+    },
+  } = await request({ query });
+
+  return { url };
+};
+
 export type ContactContent = {
   title: string;
   description: string;
 };
 
-export const getContactContent = async () => {
+export const getContactContent = async (): Promise<ContactContent> => {
   const query = gql`
     {
       contact {
