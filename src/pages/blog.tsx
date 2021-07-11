@@ -8,13 +8,11 @@ import PostContent from "../components/post-content";
 
 const BlogHeader = ({ title, src }) => {
   return (
-    <div className="relative">
-      <h1 className="absolute z-50 text-5xl font-extrabold text-center text-white uppercase transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-        {title}
-      </h1>
-      <div className="absolute z-40 w-full bg-black bg-opacity-30 h-96"></div>
-      <div className="relative h-96">
-        <Image src={src} layout="fill" objectFit="cover" />
+    <div className="w-full bg-gray-500 h-96">
+      <div className="absolute left-0 w-screen h-96">
+        <div className="relative w-full h-full">
+          <Image src={src} layout="fill" objectFit="cover" />
+        </div>
       </div>
     </div>
   );
