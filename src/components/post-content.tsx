@@ -3,13 +3,13 @@ import { StructuredText } from "react-datocms";
 
 const ImageBlock = ({ title, url, caption }) => {
   return (
-    <>
+    <div className="w-full bg-gray-500">
       <h3>{title}</h3>
       <div className="relative w-full h-96">
         <Image src={url} layout="fill" objectFit="cover" />
       </div>
       <p>{caption}</p>
-    </>
+    </div>
   );
 };
 
@@ -31,7 +31,7 @@ const PostContent = ({ content }) => {
 
   return (
     <div className="h-full px-8 pt-24 bg-white">
-      <div className="prose prose-lg">
+      <div className="min-w-full prose prose-lg">
         <StructuredText data={content} renderBlock={handleBlockRender} />
       </div>
     </div>

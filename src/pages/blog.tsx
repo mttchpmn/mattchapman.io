@@ -13,7 +13,7 @@ const BlogHeader = ({ title, src }) => {
         {title}
       </h1>
       <div className="absolute z-40 w-full bg-black bg-opacity-30 h-96"></div>
-      <div className="relative bg-red-500 h-96">
+      <div className="relative h-96">
         <Image src={src} layout="fill" objectFit="cover" />
       </div>
     </div>
