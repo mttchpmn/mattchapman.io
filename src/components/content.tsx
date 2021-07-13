@@ -6,7 +6,7 @@ const Content = ({
 }) => {
   const bg = background ? "bg-" + background : "";
   const fg = foreground ? "bg-" + foreground : "";
-  const width = maxWidth ? "max-w-" + maxWidth : "max-w-6xl";
+  const width = maxWidth ? maxWidth : "max-w-6xl";
 
   return (
     <div className={`w-full h-full ${bg}`}>

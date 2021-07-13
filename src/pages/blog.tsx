@@ -27,7 +27,7 @@ export default function Post({ blogPost }: { blogPost: BlogPost }) {
         title={blogPost.title}
         src={blogPost.headerImage}
       />
-      <Content maxWidth="4xl">
+      <Content maxWidth="max-w-4xl">
         <PostContent content={blogPost.content} />
       </Content>
     </Layout>
