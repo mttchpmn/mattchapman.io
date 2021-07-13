@@ -47,11 +47,11 @@ const Contact = ({ content }: { content: ContactContent }) => {
       </Modal>
       <section
         id="contact"
-        className="relative text-gray-600 bg-white body-font"
+        className="relative text-gray-200 bg-gray-700 body-font"
       >
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-24 mx-auto text-white">
           <div className="flex flex-col w-full mb-12 text-center">
-            <h1 className="mb-4 text-2xl font-medium text-gray-900 sm:text-3xl title-font">
+            <h1 className="mb-4 text-2xl font-medium text-white sm:text-3xl title-font">
               {content.title}
             </h1>
             <p className="mx-auto text-base leading-relaxed lg:w-1/2">
@@ -62,10 +62,7 @@ const Contact = ({ content }: { content: ContactContent }) => {
             <div className="flex flex-wrap -m-2">
               <div className="w-1/2 p-2">
                 <div className="relative">
-                  <label
-                    htmlFor="name"
-                    className="text-sm leading-7 text-gray-600"
-                  >
+                  <label htmlFor="name" className="text-sm leading-7">
                     Name
                   </label>
                   <input
@@ -80,10 +77,7 @@ const Contact = ({ content }: { content: ContactContent }) => {
               </div>
               <div className="w-1/2 p-2">
                 <div className="relative">
-                  <label
-                    htmlFor="email"
-                    className="text-sm leading-7 text-gray-600"
-                  >
+                  <label htmlFor="email" className="text-sm leading-7">
                     Email
                   </label>
                   <input
@@ -98,10 +92,7 @@ const Contact = ({ content }: { content: ContactContent }) => {
               </div>
               <div className="w-full p-2">
                 <div className="relative">
-                  <label
-                    htmlFor="message"
-                    className="text-sm leading-7 text-gray-600"
-                  >
+                  <label htmlFor="message" className="text-sm leading-7">
                     Message
                   </label>
                   <textarea
