@@ -1,14 +1,35 @@
 import Image from "next/image";
 import { StructuredText } from "react-datocms";
 
-const ImageBlock = ({ title, url, caption }) => {
+const LargeImage = ({ title, url, caption }) => {
   return (
-    <div className="w-full">
-      <div className="relative w-full h-96">
-        <Image src={url} layout="fill" objectFit="cover" />
+    <div className="py-10">
+      <div className="w-full h-96 lg:h-750">
+        <div className="absolute w-5/6 transform -translate-x-1/2 xl:w-2/3 left-1/2 h-96 lg:h-750">
+          <div className="relative w-full h-96 lg:h-750">
+            <Image src={url} layout="fill" objectFit="cover" />
+          </div>
+          <div className="text-sm text-center">{caption}</div>
+        </div>
       </div>
-      <div className="text-sm text-center">{caption}</div>
     </div>
+  );
+};
+
+const SmallImage = ({ title, url, caption }) => (
+  <div className="w-full">
+    <div className="relative w-full h-96">
+      <Image src={url} layout="fill" objectFit="cover" />
+    </div>
+    <div className="text-sm text-center">{caption}</div>
+  </div>
+);
+
+const ImageBlock = ({ title, url, caption, lrg }) => {
+  return lrg ? (
+    <LargeImage title={title} url={url} caption={caption} />
+  ) : (
+    <SmallImage title={title} url={url} caption={caption} />
   );
 };
 
@@ -38,6 +59,7 @@ const PostContent = ({ content }) => {
             title={record.title}
             url={record.image.url}
             caption={record.caption}
+            lrg={true}
           />
         );
       default:
