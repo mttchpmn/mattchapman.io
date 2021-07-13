@@ -23,7 +23,7 @@ export default function Post({ blogPost }: { blogPost: BlogPost }) {
   return (
     <Layout>
       <BlogHeader
-        lrg={true}
+        lrg={blogPost.isLargeHeader}
         title={blogPost.title}
         src={blogPost.headerImage}
       />

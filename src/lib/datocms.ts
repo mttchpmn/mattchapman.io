@@ -101,12 +101,13 @@ type Json = string;
 export type BlogPost = {
   title: string;
   headerImage: string;
+  isLargeHeader: boolean;
   content: Json;
   slug: string;
   tags: string[];
 };
 
-export const getBlogPosts = async () => {
+export const getBlogPosts = async (): Promise<BlogPost> => {
   const query = gql`
     {
       blogPost {
@@ -114,6 +115,7 @@ export const getBlogPosts = async () => {
         headerImage {
           url
         }
+        isLargeHeader
         slug
         tags {
           name
@@ -128,6 +130,7 @@ export const getBlogPosts = async () => {
                 url
               }
               caption
+              isLargeImage
             }
           }
           value
@@ -141,6 +144,7 @@ export const getBlogPosts = async () => {
   const blogPost = {
     title: data.title,
     headerImage: data.headerImage.url,
+    isLargeHeader: data.isLargeHeader,
     content: data.content,
     slug: data.slug,
     tags: data.tags.map((t) => t.name),

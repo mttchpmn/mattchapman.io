@@ -59,7 +59,7 @@ const PostContent = ({ content }) => {
             title={record.title}
             url={record.image.url}
             caption={record.caption}
-            lrg={true}
+            lrg={record.isLargeImage}
           />
         );
       default:
