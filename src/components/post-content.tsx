@@ -7,7 +7,7 @@ const LargeImage = ({ title, url, caption }) => {
       <div className="w-full h-96 lg:h-750">
         <div className="absolute w-5/6 transform -translate-x-1/2 xl:w-2/3 left-1/2 h-96 lg:h-750">
           <div className="relative w-full h-96 lg:h-750">
-            <Image src={url} layout="fill" objectFit="cover" />
+            <Image src={url} alt={title} layout="fill" objectFit="cover" />
           </div>
           <div className="text-sm text-center">{caption}</div>
         </div>
@@ -19,7 +19,7 @@ const LargeImage = ({ title, url, caption }) => {
 const SmallImage = ({ title, url, caption }) => (
   <div className="w-full">
     <div className="relative w-full h-96">
-      <Image src={url} layout="fill" objectFit="cover" />
+      <Image src={url} alt={title} layout="fill" objectFit="cover" />
     </div>
     <div className="text-sm text-center">{caption}</div>
   </div>
