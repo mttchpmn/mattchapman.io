@@ -3,12 +3,11 @@ import { StructuredText } from "react-datocms";
 
 const ImageBlock = ({ title, url, caption }) => {
   return (
-    <div className="w-full bg-gray-500">
-      <h3>{title}</h3>
+    <div className="w-full">
       <div className="relative w-full h-96">
         <Image src={url} layout="fill" objectFit="cover" />
       </div>
-      <p>{caption}</p>
+      <div className="text-sm text-center">{caption}</div>
     </div>
   );
 };
