@@ -12,15 +12,20 @@ import Contact from "../components/contact";
 import LatestPosts from "../components/latest-posts";
 import Layout from "../components/layout";
 import Social from "../components/social";
+import Content from "../components/content";
 
 export default function Home({ bannerContent, bioContent, contactContent }) {
   return (
     <Layout>
       <Banner content={bannerContent} />
-      <Bio content={bioContent} />
-      <LatestPosts />
+      <Content background="gray-100">
+        <Bio content={bioContent} />
+        <LatestPosts />
+      </Content>
       <Contact content={contactContent} />
-      <Social />
+      <Content background="gray-100">
+        <Social />
+      </Content>
     </Layout>
   );
 }
