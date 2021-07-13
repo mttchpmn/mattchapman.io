@@ -13,6 +13,23 @@ const ImageBlock = ({ title, url, caption }) => {
   );
 };
 
+const Meta = ({ tag, date }) => {
+  return (
+    <div className="py-8">
+      <div className="flex justify-end">
+        <p className="pr-2 text-right">{date}</p>
+        <i className="bx bx-sm bx-calendar" />
+      </div>
+      <a href="#">
+        <div className="flex justify-end pt-2">
+          <p className="pr-2 text-right">{tag}</p>
+          <i className="bx bx-sm bx-purchase-tag" />
+        </div>
+      </a>
+    </div>
+  );
+};
+
 const PostContent = ({ content }) => {
   const handleBlockRender = ({ record }) => {
     switch (record.__typename) {
@@ -31,10 +48,7 @@ const PostContent = ({ content }) => {
 
   return (
     <div className="">
-      <div className="py-8">
-        <p className="text-right">June 2021</p>
-        <p className="text-right">Adventure</p>
-      </div>
+      <Meta tag="Adventure" date="July 2021" />
       <div className="min-w-full pt-12 pb-48 prose prose-lg">
         <StructuredText data={content} renderBlock={handleBlockRender} />
       </div>
