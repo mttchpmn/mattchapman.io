@@ -30,8 +30,12 @@ const PostContent = ({ content }) => {
   };
 
   return (
-    <div className="h-full px-8 pt-24 bg-white">
-      <div className="min-w-full prose prose-lg">
+    <div className="">
+      <div className="py-8">
+        <p className="text-right">June 2021</p>
+        <p className="text-right">Adventure</p>
+      </div>
+      <div className="min-w-full pt-12 pb-48 prose prose-lg">
         <StructuredText data={content} renderBlock={handleBlockRender} />
       </div>
     </div>

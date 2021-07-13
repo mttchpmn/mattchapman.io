@@ -5,14 +5,15 @@ import { BlogPost, getBlogPosts } from "../lib/datocms";
 import Image from "next/image";
 import Container from "../components/container";
 import PostContent from "../components/post-content";
+import Content from "../components/content";
 
-const BlogHeader = ({ title, src }) => {
+const BlogHeader = ({ title, src, lrg }) => {
+  const height = lrg ? "h-750" : "h-500";
+
   return (
-    <div className="w-full bg-gray-500 h-96">
-      <div className="absolute left-0 w-screen h-96">
-        <div className="relative w-full h-full">
-          <Image src={src} layout="fill" objectFit="cover" />
-        </div>
+    <div className={`w-full bg-gray-500 ${height}`}>
+      <div className="relative w-full h-full">
+        <Image src={src} layout="fill" objectFit="cover" />
       </div>
     </div>
   );
@@ -21,10 +22,14 @@ const BlogHeader = ({ title, src }) => {
 export default function Post({ blogPost }: { blogPost: BlogPost }) {
   return (
     <Layout>
-      <Container>
-        <BlogHeader title={blogPost.title} src={blogPost.headerImage} />
+      <BlogHeader
+        lrg={true}
+        title={blogPost.title}
+        src={blogPost.headerImage}
+      />
+      <Content maxWidth="4xl">
         <PostContent content={blogPost.content} />
-      </Container>
+      </Content>
     </Layout>
   );
 }
