@@ -100,6 +100,8 @@ type Json = string;
 
 export type BlogPost = {
   title: string;
+  description: string;
+  category: string;
   headerImage: string;
   isLargeHeader: boolean;
   content: Json;
@@ -107,7 +109,59 @@ export type BlogPost = {
   tags: string[];
 };
 
-export const getBlogPosts = async (): Promise<BlogPost> => {
+export const getBlogPosts = async (): Promise<BlogPost[]> => {
+  const query = gql`
+    {
+      allBlogPosts {
+        title
+        description
+        category {
+          title
+        }
+        headerImage {
+          url
+        }
+        isLargeHeader
+        slug
+        tags {
+          name
+        }
+        content {
+          blocks {
+            id
+            __typename
+            ... on ImageBlockRecord {
+              title
+              image {
+                url
+              }
+              caption
+              isLargeImage
+            }
+          }
+          value
+        }
+      }
+    }
+  `;
+
+  const { allBlogPosts } = await request({ query });
+
+  const blogPosts = allBlogPosts.map((data) => ({
+    title: data.title,
+    description: data.description,
+    category: data.category.title,
+    headerImage: data.headerImage.url,
+    isLargeHeader: data.isLargeHeader,
+    content: data.content,
+    slug: data.slug,
+    tags: data.tags.map((t) => t.name),
+  }));
+
+  return blogPosts;
+};
+
+export const getBlogPost = async (): Promise<BlogPost> => {
   const query = gql`
     {
       blogPost {
