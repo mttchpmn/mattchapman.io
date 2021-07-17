@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { AboutContent } from "../lib/datocms";
+import Button from "./ui/button";
 
 export default function Bio({ content }: { content: AboutContent }) {
   return (
@@ -14,9 +15,7 @@ export default function Bio({ content }: { content: AboutContent }) {
           <p className="mb-8 leading-relaxed">{content.description}</p>
           <div className="flex justify-center w-full md:justify-start">
             <Link href="#contact">
-              <button className="inline-flex px-6 py-2 text-white bg-gray-500 border-0 rounded text-md md:text-lg focus:outline-none hover:bg-gray-600">
-                Get in touch
-              </button>
+              <Button variant="secondary" text="Get in touch" />
             </Link>
           </div>
         </div>
