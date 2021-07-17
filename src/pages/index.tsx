@@ -24,12 +24,12 @@ export default function Home({
   return (
     <Layout>
       <Banner content={bannerContent} />
-      <Content background="gray-100">
+      <Content>
         <Bio content={bioContent} />
         <LatestPosts content={postsContent} />
       </Content>
       <Contact content={contactContent} />
-      <Content background="gray-100">
+      <Content>
         <Social />
       </Content>
     </Layout>

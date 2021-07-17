@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type ContentProps = {
   children: ReactNode;
-  maxWidth: string;
+  maxWidth?: string;
 };
 
 const Content: React.FC<ContentProps> = ({ children, maxWidth }) => {
