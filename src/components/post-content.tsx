@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { StructuredText } from "react-datocms";
+import Icon from "./ui/icon";
 
 const LargeImage = ({ title, url, caption }) => {
   return (
@@ -38,12 +39,12 @@ const Meta = ({ tag, date }) => {
     <div className="py-8">
       <div className="flex justify-end">
         <p className="pr-2 text-right">{date}</p>
-        <i className="bx bx-sm bx-calendar" />
+        <Icon name="bx-calendar" />
       </div>
       <a href="#">
         <div className="flex justify-end pt-2">
           <p className="pr-2 text-right">{tag}</p>
-          <i className="bx bx-sm bx-purchase-tag" />
+          <Icon name="bx-purchase-tag" />
         </div>
       </a>
     </div>

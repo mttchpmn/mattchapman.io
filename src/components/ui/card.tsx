@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Icon from "./icon";
 
 type CardProps = {
   title: string;
@@ -32,7 +33,7 @@ const Card: React.FC<CardProps> = (props) => {
             <a>
               <div className="flex text-purple-500 hover:text-purple-700">
                 <p>{props.cta}</p>
-                <i className="bx bxs-right-arrow-alt bx-sm"></i>
+                <Icon name="bxs-right-arrow-alt" />
               </div>
             </a>
           </Link>
