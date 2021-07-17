@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ContactContent } from "../lib/datocms";
-import Modal from "./modal";
+import Modal from "./ui/modal";
 import Button from "./ui/button";
 
 const Contact = ({ content }: { content: ContactContent }) => {
