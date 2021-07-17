@@ -109,6 +109,20 @@ export type BlogPost = {
   tags: string[];
 };
 
+export const getAllPostSlugs = async (): Promise<string[]> => {
+  const query = gql`
+    {
+      allBlogPosts {
+        slug
+      }
+    }
+  `;
+
+  const { allBlogPosts } = await request({ query });
+
+  return allBlogPosts.map((p) => ({ params: { slug: p.slug } }));
+};
+
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const query = gql`
     {
@@ -161,11 +175,15 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   return blogPosts;
 };
 
-export const getBlogPost = async (): Promise<BlogPost> => {
+export const getBlogPostBySlug = async (slug: string): Promise<BlogPost> => {
   const query = gql`
-    {
-      blogPost {
+    query GetPostBySlug {
+      blogPost(filter: { slug: { eq: "${slug}" } }) {
         title
+        description
+        category {
+          title
+        }
         headerImage {
           url
         }
@@ -195,8 +213,12 @@ export const getBlogPost = async (): Promise<BlogPost> => {
 
   const { blogPost: data } = await request({ query });
 
+  console.log(data);
+
   const blogPost = {
     title: data.title,
+    description: data.description,
+    category: data.category.title,
     headerImage: data.headerImage.url,
     isLargeHeader: data.isLargeHeader,
     content: data.content,

@@ -1,11 +1,12 @@
-import { GetStaticProps } from "next";
-import Layout from "../components/layout";
-import { StructuredText } from "react-datocms";
-import { BlogPost, getBlogPost } from "../lib/datocms";
 import Image from "next/image";
-import Container from "../components/container";
-import PostContent from "../components/post-content";
-import Content from "../components/content";
+import Content from "../../components/content";
+import Layout from "../../components/layout";
+import PostContent from "../../components/post-content";
+import {
+  BlogPost,
+  getAllPostSlugs,
+  getBlogPostBySlug,
+} from "../../lib/datocms";
 
 const BlogHeader = ({ title, src, lrg }) => {
   const height = lrg ? "md:h-750" : "md:h-500";
@@ -19,7 +20,7 @@ const BlogHeader = ({ title, src, lrg }) => {
   );
 };
 
-export default function Post({ blogPost }: { blogPost: BlogPost }) {
+const Post = ({ blogPost }: { blogPost: BlogPost }) => {
   return (
     <Layout>
       <BlogHeader
@@ -32,16 +33,18 @@ export default function Post({ blogPost }: { blogPost: BlogPost }) {
       </Content>
     </Layout>
   );
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  const blogPost = await getBlogPost();
-
-  console.log(blogPost);
-
-  return {
-    props: {
-      blogPost,
-    },
-  };
 };
+
+export const getStaticProps = async ({ params }) => {
+  const blogPost = await getBlogPostBySlug(params.slug);
+
+  return { props: { blogPost } };
+};
+
+export const getStaticPaths = async () => {
+  const paths = await getAllPostSlugs();
+
+  return { paths, fallback: false };
+};
+
+export default Post;
