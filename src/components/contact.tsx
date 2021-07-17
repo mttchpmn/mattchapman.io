@@ -9,6 +9,7 @@ const Contact = ({ content }: { content: ContactContent }) => {
   const [message, setMessage] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("Error");
   const [modalText, setModalText] = useState("");
 
   const handleFormSubmit = async () => {
@@ -25,7 +26,10 @@ const Contact = ({ content }: { content: ContactContent }) => {
 
     const data = await response.json();
 
-    if (data.successful) clearFormFields();
+    if (data.successful) {
+      setModalTitle("Success");
+      clearFormFields();
+    }
 
     showModal(data.message);
   };
@@ -43,7 +47,7 @@ const Contact = ({ content }: { content: ContactContent }) => {
 
   return (
     <div>
-      <Modal visible={modalOpen} setVisible={setModalOpen}>
+      <Modal title={modalTitle} visible={modalOpen} setVisible={setModalOpen}>
         <p>{modalText}</p>
       </Modal>
       <section
