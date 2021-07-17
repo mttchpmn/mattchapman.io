@@ -107,12 +107,6 @@ const Contact = ({ content }: { content: ContactContent }) => {
               </div>
               <div className="w-full p-2 text-center">
                 <Button text="Send Message" onClick={handleFormSubmit} />
-                {/* <button
-                  onClick={handleFormSubmit}
-                  className="flex px-8 py-2 mx-auto text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
-                >
-                  Send Message
-                </button> */}
               </div>
             </div>
           </div>
