@@ -10,7 +10,7 @@ const Content = ({
 
   return (
     <div className={`w-full h-full ${bg}`}>
-      <div className={`${width} px-8 mx-auto ${fg}`}>{children}</div>
+      <div className={`${width} px-1 md:px-8 mx-auto ${fg}`}>{children}</div>
     </div>
   );
 };
