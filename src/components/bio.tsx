@@ -15,7 +15,7 @@ export default function Bio({ content }: { content: AboutContent }) {
           <p className="mb-8 leading-relaxed">{content.description}</p>
           <div className="flex justify-center w-full md:justify-start">
             <Link href="#contact">
-              <Button variant="secondary" text="Get in touch" />
+              <Button text="Get in touch" />
             </Link>
           </div>
         </div>

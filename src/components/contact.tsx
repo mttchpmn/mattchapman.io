@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ContactContent } from "../lib/datocms";
 import Modal from "./modal";
+import Button from "./ui/button";
 
 const Contact = ({ content }: { content: ContactContent }) => {
   const [name, setName] = useState("");
@@ -104,13 +105,14 @@ const Contact = ({ content }: { content: ContactContent }) => {
                   ></textarea>
                 </div>
               </div>
-              <div className="w-full p-2">
-                <button
+              <div className="w-full p-2 text-center">
+                <Button text="Send Message" onClick={handleFormSubmit} />
+                {/* <button
                   onClick={handleFormSubmit}
                   className="flex px-8 py-2 mx-auto text-lg text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
                 >
                   Send Message
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

@@ -10,7 +10,10 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const classnames = new Map();
-  classnames.set("primary", "bg-gray-500 hover:bg-gray-700 text-white");
+  classnames.set(
+    "primary",
+    "bg-gray-500 hover:bg-gray-700 border-2 border-transparent hover:border-white text-white"
+  );
   classnames.set(
     "secondary",
     "border-2 border-gray-700 border-opacity-60 hover:bg-gray-200 bg-white text-gray-700"
