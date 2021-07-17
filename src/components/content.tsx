@@ -9,7 +9,7 @@ const Content = ({
   const width = maxWidth ? maxWidth : "max-w-6xl";
 
   return (
-    <div className={`w-full h-full ${bg}`}>
+    <div className={`${bg}`}>
       <div className={`${width} px-2 md:px-8 mx-auto ${fg}`}>{children}</div>
     </div>
   );

@@ -18,9 +18,11 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         />
       </Head>
-      <Header />
-      {children}
-      <Footer />
+      <div className="flex flex-col h-screen">
+        <Header />
+        <div className="flex-grow">{children}</div>
+        <Footer />
+      </div>
     </>
   );
 };

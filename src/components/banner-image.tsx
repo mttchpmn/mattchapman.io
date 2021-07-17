@@ -2,7 +2,6 @@ import Image from "next/image";
 import { BannerContent } from "../lib/datocms";
 
 const Banner = ({ content }: { content: BannerContent }) => {
-  console.log({ content });
   return (
     <section>
       <div className="relative w-full h-48 md:h-96">
