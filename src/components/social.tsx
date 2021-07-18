@@ -2,13 +2,13 @@ import Icon from "./ui/icon";
 
 const SocialBox = ({ title, description, icon, url }) => {
   return (
-    <div className="py-12 text-center bg-white group hover:bg-gray-100 rounded-xl">
+    <div className="py-6 text-center bg-white border-2 border-transparent border-opacity-60 hover:border-gray-200 group hover:bg-gray-50 rounded-xl">
       <a rel="noopener noreferrer" href={url} target="_blank">
         <div className="p-2 group-hover:text-indigo-700">
           <Icon name={`bxl-${icon}`} variant="md" />
         </div>
         <h3 className="text-xl font-semibold text-black">{title}</h3>
-        <p className="w-5/6 mx-auto">{description}</p>
+        <p className="w-2/3 mx-auto">{description}</p>
       </a>
     </div>
   );
@@ -21,7 +21,7 @@ const Social = () => {
         <h3 className="pb-6 text-3xl text-center text-black text-semibold">
           Follow me on social
         </h3>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <SocialBox
             title="GitHub"
             url="https://github.com/mttchpmn"
