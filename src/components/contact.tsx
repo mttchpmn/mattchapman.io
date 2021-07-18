@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ContactContent } from "../lib/datocms";
 import Modal from "./ui/modal";
 import Button from "./ui/button";
+import Title from "./ui/title";
 
 const Contact = ({ content }: { content: ContactContent }) => {
   const [name, setName] = useState("");
@@ -56,9 +57,7 @@ const Contact = ({ content }: { content: ContactContent }) => {
       >
         <div className="container px-5 py-24 mx-auto text-white">
           <div className="flex flex-col w-full mb-12 text-center">
-            <h1 className="mb-4 text-2xl font-medium text-white sm:text-3xl title-font">
-              {content.title}
-            </h1>
+            <Title variant={2} text={content.title} color="text-white" />
             <p className="mx-auto text-base leading-relaxed lg:w-1/2">
               {content.description}
             </p>

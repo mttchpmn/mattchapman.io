@@ -1,4 +1,5 @@
 import Icon from "./ui/icon";
+import Title from "./ui/title";
 
 const SocialBox = ({ title, description, icon, url }) => {
   return (
@@ -17,10 +18,10 @@ const SocialBox = ({ title, description, icon, url }) => {
 const Social = () => {
   return (
     <section className="text-gray-600 body-font">
-      <div className="max-w-6xl px-5 py-12 mx-auto">
-        <h3 className="pb-6 text-3xl text-center text-black text-semibold">
-          Follow me on social
-        </h3>
+      <div className="pt-6 text-center">
+        <Title variant={2} text="Follow me on social" />
+      </div>
+      <div className="max-w-6xl px-5 pt-6 pb-12 mx-auto">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <SocialBox
             title="GitHub"
