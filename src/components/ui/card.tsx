@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = (props) => {
     <div className="w-full h-full p-4">
       <div className="bg-white border-2 border-gray-200 rounded-lg border-opacity-60">
         {/* Card media */}
-        <div className="relative h-40 bg-blue-500 rounded-lg sm:h-64 lg:h-52">
+        <div className="relative h-40 rounded-lg sm:h-64 lg:h-52">
           <Image src={props.img} layout="fill" objectFit="cover" />
         </div>
 
