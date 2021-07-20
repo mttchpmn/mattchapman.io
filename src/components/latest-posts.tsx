@@ -11,7 +11,7 @@ const LatestPosts = ({ content }: { content: BlogPost[] }) => {
         <div className="text-center">
           <Title variant={2} text="Latest Posts" />
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid md:grid-cols-3">
           {posts.map((p) => (
             <Card
               title={p.title}
