@@ -7,6 +7,7 @@ import {
   getAllPostSlugs,
   getBlogPostBySlug,
 } from "../../lib/datocms";
+import {GetServerSideProps, GetStaticPaths, GetStaticProps} from "next";
 
 const BlogHeader = ({ title, src, lrg }) => {
   const height = lrg ? "md:h-750" : "md:h-500";
@@ -35,13 +36,13 @@ const Post = ({ blogPost }: { blogPost: BlogPost }) => {
   );
 };
 
-export const getStaticProps = async ({ params }) => {
-  const blogPost = await getBlogPostBySlug(params.slug);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const blogPost = await getBlogPostBySlug(params.slug as string);
 
-  return { props: { blogPost } };
+  return { props: { blogPost }, revalidate: 60 };
 };
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllPostSlugs();
 
   return { paths, fallback: false };
