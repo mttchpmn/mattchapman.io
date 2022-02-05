@@ -2,6 +2,7 @@ import Content from "../components/content";
 import Layout from "../components/layout";
 import Card from "../components/ui/card";
 import { getBlogPosts } from "../lib/datocms";
+import {GetServerSideProps} from "next";
 
 const Blog = ({ posts }) => {
   return (
@@ -15,7 +16,7 @@ const Blog = ({ posts }) => {
               description={p.description}
               category={p.category}
               href={`/posts/${p.slug}`}
-              cta="Read post"
+              cta="Read more"
               img={p.headerImage}
             />
           ))}
@@ -25,7 +26,7 @@ const Blog = ({ posts }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await getBlogPosts();
 
   return { props: { posts } };
