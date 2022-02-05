@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import {GetServerSideProps, GetStaticProps} from "next";
 
 import {
   getAboutContent,
@@ -36,7 +36,7 @@ export default function Home({
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const bannerContent = await getBannerContent();
   const bioContent = await getAboutContent();
   const postsContent = await getBlogPosts();
